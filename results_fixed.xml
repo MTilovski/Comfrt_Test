@@ -1,0 +1,259 @@
+﻿<testsuites id="" name="" tests="11" failures="0" skipped="0" errors="0" time="293.531331">
+<testsuite name="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" timestamp="2025-03-24T16:34:47.824Z" hostname="" tests="11" failures="0" skipped="0" time="292.234" errors="0">
+<testcase name="Validate product details_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="12.957">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Generated random number: 2
+Hoodies
+Generated random number: 3
+Item PLP title is  Minimalist Hoodie
+]]>
+</system-out>
+</testcase>
+<testcase name="Validate UpSell Product_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="82.685">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Generated random number: 4
+Kids
+Generated random number: 3
+Item PLP title is  Cloud Zip Kids Hoodie
+]]>
+</system-out>
+</testcase>
+<testcase name="Purchase single product And Validate breadcrumb on checkout page_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="19.02">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Hoodies Title is not present at all
+Item PDP title is Cloud Zip Hoodie
+title for Cloud Zip Hoodie in sidecart is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item in sidecart is:  Snow | L
+price for Cloud Zip Hoodie  item in sidecart is:  $39.00
+discount for Cloud Zip Hoodie  item in sidecart is:  $130.00
+Quantity for Cloud Zip Hoodie in sidecart is:  1
+Image is present
+title for Cloud Zip Hoodie  item on checkout is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item on checkout is:  Snow / L
+price for Cloud Zip Hoodie  item on checkout is:  $39.00
+qty for Cloud Zip Hoodie  item on checkout is:  1
+The Title is matching
+The price is matching
+The qty is matching
+]]>
+</system-out>
+</testcase>
+<testcase name="Purchase 2 products_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="32.492">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Hoodies Title is not present at all
+Item PDP title is Cloud Zip Hoodie
+title for Cloud Zip Hoodie in sidecart is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item in sidecart is:  Snow | L
+price for Cloud Zip Hoodie  item in sidecart is:  $39.00
+discount for Cloud Zip Hoodie  item in sidecart is:  $130.00
+Quantity for Cloud Zip Hoodie in sidecart is:  1
+Sweatpants Title is present
+Item PDP title is Signature Straight Leg Sweatpants
+title for Signature Straight Leg Sweatpants in sidecart is:  Signature Straight Leg Sweatpants
+size for Signature Straight Leg Sweatpants  item in sidecart is:  Bark | M
+price for Signature Straight Leg Sweatpants  item in sidecart is:  $29.00
+discount for Signature Straight Leg Sweatpants  item in sidecart is:  $70.00
+Quantity for Signature Straight Leg Sweatpants in sidecart is:  1
+Image is present
+title for Cloud Zip Hoodie  item on checkout is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item on checkout is:  Snow / L
+price for Cloud Zip Hoodie  item on checkout is:  $39.00
+qty for Cloud Zip Hoodie  item on checkout is:  1
+The Title is matching
+The price is matching
+The qty is matching
+Image is present
+title for Signature Straight Leg Sweatpants  item on checkout is:  Signature Straight Leg Sweatpants
+size for Signature Straight Leg Sweatpants  item on checkout is:  Bark / M
+price for Signature Straight Leg Sweatpants  item on checkout is:  $29.00
+qty for Signature Straight Leg Sweatpants  item on checkout is:  1
+The Title is matching
+The price is matching
+The qty is matching
+]]>
+</system-out>
+</testcase>
+<testcase name="Purchase product after updating qty_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="19.898">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Hoodies Title is not present at all
+Item PDP title is Cloud Zip Hoodie
+title for Cloud Zip Hoodie in sidecart is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item in sidecart is:  Snow | L
+price for Cloud Zip Hoodie  item in sidecart is:  $39.00
+discount for Cloud Zip Hoodie  item in sidecart is:  $130.00
+Quantity for Cloud Zip Hoodie in sidecart is:  2
+the subtotal price is $78.00
+Image is present
+title for Cloud Zip Hoodie  item on checkout is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item on checkout is:  Snow / L
+price for Cloud Zip Hoodie  item on checkout is:  $78.00
+qty for Cloud Zip Hoodie  item on checkout is:  2
+The Title is matching
+The price is matching
+The qty is matching
+]]>
+</system-out>
+</testcase>
+<testcase name="Remove the only item from the side cart and validate the product purchase process is disabled_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="16.938">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Hoodies Title is present
+Item PDP title is Cloud Zip Hoodie
+title for Cloud Zip Hoodie in sidecart is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item in sidecart is:  Snow | L
+price for Cloud Zip Hoodie  item in sidecart is:  $39.00
+discount for Cloud Zip Hoodie  item in sidecart is:  $130.00
+Quantity for Cloud Zip Hoodie in sidecart is:  1
+The side cart number quantity is  Subtotal (0 item)
+The number is correct
+]]>
+</system-out>
+</testcase>
+<testcase name="Remove one of the items from the side cart and validate the product purchase process_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="23.245">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Hoodies Title is not present at all
+Item PDP title is Cloud Zip Hoodie
+title for Cloud Zip Hoodie in sidecart is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item in sidecart is:  Snow | L
+price for Cloud Zip Hoodie  item in sidecart is:  $39.00
+discount for Cloud Zip Hoodie  item in sidecart is:  $130.00
+Quantity for Cloud Zip Hoodie in sidecart is:  1
+Sweatpants Title is not present at all
+Item PDP title is Signature Straight Leg Sweatpants
+title for Signature Straight Leg Sweatpants in sidecart is:  Signature Straight Leg Sweatpants
+size for Signature Straight Leg Sweatpants  item in sidecart is:  Bark | M
+price for Signature Straight Leg Sweatpants  item in sidecart is:  $29.00
+discount for Signature Straight Leg Sweatpants  item in sidecart is:  $70.00
+Quantity for Signature Straight Leg Sweatpants in sidecart is:  1
+The side cart number quantity is  Subtotal (1 item)
+The number is correct
+Image is present
+title for Cloud Zip Hoodie  item on checkout is:  Cloud Zip Hoodie
+size for Cloud Zip Hoodie  item on checkout is:  Snow / L
+price for Cloud Zip Hoodie  item on checkout is:  $39.00
+qty for Cloud Zip Hoodie  item on checkout is:  1
+The Title is matching
+The price is matching
+]]>
+</system-out>
+</testcase>
+<testcase name="Validate Header_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="25.921">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+The collection links are present
+All collection link works properly
+Hoodies collection link works properly
+Sweatpants collection link works properly
+Kids collection link works properly
+Loungewear collection link works properly
+Blankets collection link works properly
+Pets collection link works properly
+]]>
+</system-out>
+</testcase>
+<testcase name="Validate AMBASSADOR program_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="10.523">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+This page is not working properly
+]]>
+</system-out>
+</testcase>
+<testcase name="Verify that Sign up now button works_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="21.974">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Starting discount process for email: test4@local.com
+Scrolled to Sign Up footer button
+Clicked Sign Up footer button
+Pretty Comfy button is visible
+Clicked Pretty Comfy button
+Filled email field with: test4@local.com
+Clicked Claim 15% button
+Activate button is visible
+Filled phone field with: +4915510830069
+Clicked Activate button
+Shop Now button is visible
+Clicked Shop Now button
+The discount is not presnet
+Discount process completed successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Verify the Footer menu links_web" classname="playwright - for nitesh\comfrt-poc\src\tests\Regression\COMFRT_Regression.spec.ts" time="26.581">
+<properties>
+<property name="slow" value="">
+</property>
+</properties>
+<system-out>
+<![CDATA[Waiting before starting next test...
+Starting test now
+Comfrt Mindset Link works properly
+FAQ Link works properly
+Resources Link works properly
+Contact Link works properly
+Privacy Policy Link works properly
+Terms of Service Link works properly
+Pre-Order Link works properly
+Refund Policy Link works properly
+Pricing Policy Link works properly
+Exchanges Link works properly
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

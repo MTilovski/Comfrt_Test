@@ -52,4 +52,4 @@ test('LambdaTest Playwright Sample Test', async () => {
 });
 
 
-// npx playwright test comfrt-poc/Lambda/SmartUI_Demo.spec.ts
+// npx playwright test comfrt-poc/src/tests/SmartUI_Demo.spec.ts --headed

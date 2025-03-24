@@ -1,8 +1,12 @@
-import { PlaywrightTestConfig } from '@playwright/test';
+import { PlaywrightTestConfig, devices  } from '@playwright/test';
 import dotenv from 'dotenv';
 import Browser from 'framework/Browser';
 import TestListener from 'framework/logger/TestListener'
+import { Reporter } from 'playwright/types/testReporter';
+import { TestmoReporterOptions } from "playwright-testmo-reporter";
 dotenv.config();
+
+
 
 /**
  * Read environment variables from file.
@@ -14,7 +18,9 @@ dotenv.config();
  * See https://playwright.dev/docs/test-configuration.
  */
 const timeInMin: number = 60 * 1000;
-const config: PlaywrightTestConfig = {
+ const config: PlaywrightTestConfig = {
+  
+
 
   testDir: "./src/tests",
   testMatch: "**/*.spec.ts",
@@ -43,9 +49,25 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  // reporter: [['junit', { 
+  //   outputFile: 'results/test-results.xml',
+  //   embedAnnotationsAsProperties: true,
+    
+
+  //   // Not used by Testmo
+  //   // embedAttachmentsAsProperty: undefined 
+  // }]],
+  
+
+  reporter: [
+    ['html', { open: 'always' }],
+    ['json', { outputFile: 'test-results/results.json' }],
+    ['junit', { outputFile: './test-results.xml' }]
+  ],
+  
+    /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   /*
+  
     use: {
       browserName: Browser.type(process.env.BROWSER.toLowerCase()),
       headless: false,
@@ -112,7 +134,7 @@ const config: PlaywrightTestConfig = {
     {
       name: "chrome@Samsung Galaxy S22:13@browserstack-mobile",
       use: {
-        baseURL: "https://blendjet.com",
+        baseURL: "https://comfrt.com/?__orly_origin=qa-bento-stage",
         browserName: "chromium",
         channel: "chrome",
       },
@@ -150,7 +172,7 @@ const config: PlaywrightTestConfig = {
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-};
-
-
+  outputDir: "./test-results1/",
+  
+ };
 export default config;

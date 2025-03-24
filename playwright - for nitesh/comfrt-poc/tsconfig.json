@@ -18,12 +18,16 @@
            "types": ["@playwright/test"],
         },
         "target": "ESNext",
-        "module": "CommonJS",
+        "module": "ESNext",
         "moduleResolution": "Node",
         "sourceMap": true,
         "outDir": "../tests-out",
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "lib": ["dom", "esnext"]
     }
 }

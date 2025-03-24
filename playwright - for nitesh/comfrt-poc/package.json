@@ -12,7 +12,9 @@
     "report": "allure serve",
     "test": "playwright test",
     "test:demo": "playwright test -g demo",
-    "test:visual": "percy exec -- playwright test -g visual --reporter=dot"
+    "test:visual": "percy exec -- playwright test -g visual --reporter=dot",
+    "testDemo": "npx playwright test comfrt-poc/src/tests/E2E_Example_Tests/E2E_DynamicTest.spec.ts --headed --reporter=html" 
+
   },
   "keywords": [],
   "author": "Martin Tilovski",

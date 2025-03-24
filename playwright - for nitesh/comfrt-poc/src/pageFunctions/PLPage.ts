@@ -24,19 +24,20 @@ export default class PLPageFunctions {
         });
     }
 
-    public async verifyPLPTitle(Title: string, Title1: string){
+    public async verifyPLPTitle(Title: string){
         test.step('Verify that the PLP title is present and correct', async() => {
             let TITLE =`//*[@id="collections_with_pagination-default-collections-with-pagination_0"]/h1[contains(text(),'${Title}')]`
-            const mainTitle = await this.page.locator(TITLE).isVisible();
-            let TITLE1 = `//*[contains(@id, 'featured_products')]/div/div/h1[contains(text(),'${Title1}')]`;
-            const titleBelowBanner = await this.page.locator(TITLE1).isVisible();
-
-            if (mainTitle) {
-                console.log('Title is present');
-              } else if (titleBelowBanner) {
-                console.log('Title is present below the banner');
+            const mainTitle = await this.page.locator(TITLE);
+            const mainTitleVisable = await mainTitle.isVisible();
+            let TITLE1 = `//*[contains(@id, 'featured_products')]/div/div/h1[contains(text(),'${Title}')]`;
+            const titleBelowBanner = await this.page.locator(TITLE1);
+            const titleBelowBannerVisable =  await titleBelowBanner.isVisible();
+            if (mainTitleVisable) {
+                await console.log(Title,'Title is present');
+              } else if (titleBelowBannerVisable) {
+                await console.log(Title,'Title is present below the banner');
               } else {
-                console.log('Title is not present');
+                await console.log(Title,'Title is not present at all');
               }
               
         })

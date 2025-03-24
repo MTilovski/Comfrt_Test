@@ -1,4 +1,4 @@
-import {Page, expect } from "@playwright/test";
+import {Page, expect, chromium } from "@playwright/test";
 import UIActions from "framework/actions/UIActions";
 import PDPPageConstants from "framework/constants/PDPPageConstatnts";
 import PDPage from "../pages/PDPage";
@@ -10,6 +10,7 @@ export default class PDPFunctions {
     public priceText: string;
     public itemPDPtitle: string;
     public itemTitleComparason: string;
+    public PDPtitle: string;
 
     public getPage(): Page {
         return this.page;
@@ -85,6 +86,7 @@ export default class PDPFunctions {
     }
     public async verifyDynamicItemTitle(){
         await test.step('Verify the item title od PDP', async() => {
+            await this.page.waitForTimeout(1000);
             await this.page.locator(PDPage.PRODUCT_TITLE).waitFor();
             await this.page.locator(PDPage.PRODUCT_TITLE).isVisible();
             this.itemPDPtitle = await this.page.locator(PDPage.PRODUCT_TITLE).textContent();
@@ -92,7 +94,30 @@ export default class PDPFunctions {
             return this.itemPDPtitle;
             
             
-        });
-        
+        });    
     }
+    public async verifyItemDescription(){
+        await test.step('Verify the item description', async() => {
+            await this.page.locator(PDPage.PRODUCT_DESCRIPTION).waitFor();
+            await this.page.locator(PDPage.PRODUCT_DESCRIPTION).isVisible();            
+        });    
+    }
+
+    public async CompleteTheLook_Verification(){
+        await test.step('Verify the item image, title, price, size, color in the complete the look section on PDP', async() => {
+            await this.page.locator(PDPage.COMPLETE_THE_LOOK_IMAGE_1).waitFor();
+            await this.page.locator(PDPage.COMPLETE_THE_LOOK_IMAGE_1).isVisible();
+            await this.page.locator(PDPage.COMPLETE_THE_LOOK_TITLE_1).isVisible(); 
+            await this.page.locator(PDPage.COMPLETE_THE_LOOK_PRICE_1).isVisible();    
+            await this.page.locator(PDPage.COMPLETE_THE_LOOK_SIZE_1).isVisible();   
+            await this.page.locator(PDPage.COMPLETE_THE_LOOK_COLOR_1).isVisible();                  
+        });    
+    } 
+    public async CompleteTheLook_AddToCartVerification(){
+        await test.step('Verify the item image, title, price, size, color in the complete the look section on PDP', async() => {
+            await this.page.locator(PDPage.COMPLETE_THE_LOOK_IMAGE_1).waitFor();
+            await this.page.locator(PDPage.COMPLETE_THE_LOOK_IMAGE_1).isVisible();
+        });
+    }    
 }
+

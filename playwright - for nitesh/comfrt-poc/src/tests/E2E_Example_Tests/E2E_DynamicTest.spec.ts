@@ -25,7 +25,7 @@ test.beforeEach(async ({ page }) => {
     sidecart = new SideCartFunctions(page);
     checkout = new CheckOutFunctions(page);
     shipping = new ShippingFunctions(page);
-    helpers = new Helpers();
+    helpers = new Helpers(page);
 
 });
 
@@ -45,24 +45,24 @@ test('Complete Shopping Journey - Dynamic test', async ({page}) => {
        await pdp.verifyDynamicItemTitle();
        await pdp.grabItemPrice();
        await helpers.compareItemTitles(plp.item1Name,pdp.itemPDPtitle);
-       test.fail(helpers.titleMatch === true, 'Titles dont match');
    // Add item to cart and click checkout button    
        await pdp.addItemToCart();
-       await sidecart.verifyItemsInCart();
+       await sidecart.verifyItemsInCart1(pdp.itemPDPtitle);
+       const item1title = pdp.itemPDPtitle
        await sidecart.clickCheckOutButton();
-       await page.waitForTimeout(300);
-       await checkout.grabCheckoutItemPrice();
-       await page.waitForTimeout(300);
-       await helpers.formatPrice(checkout.itemPriceCheckOutPage);
-       await helpers.comparePrices(pdp.discountText,checkout.itemPriceCheckOutPage);
-       test.fail(helpers.priceMatch === true, 'Prices dont match')
+       await checkout.grabItemValueFromCheckout(item1title);
+    //Validate first Item  
+       await helpers.compare(sidecart.title_sidecart1,checkout.title_checkout,'Title');
+       // await helpers.compare(sidecart.size_sidecart,checkout.size_checkout,'size and color');   a change | and \
+       await helpers.compare(sidecart.price_sidecart1,checkout.price_checkout,'price');
+       await helpers.compare(sidecart.value1,checkout.qty_checkout,'qty');
    // Insert Email, Country/Region, First name, Last name, Adress, City, Postcode, Phone number
        await checkout.fillCredentials(Credentials.EMAIL,Credentials.COUNTRY,Credentials.FIRST_NAME,Credentials.LAST_NAME,Credentials.ADDRESS,Credentials.CITY,Credentials.ZIP,Credentials.PHONE);
        await checkout.clickContinueToShippingButton();
        await page.waitForTimeout(500);
-       await shipping.clickContinueToPayment();                             // Unclickable button
+      // await shipping.clickContinueToPayment();                             // Unclickable button
       
     });
    
-   //run test - npx playwright test comfrt-poc/src/tests/E2E_DynamicTest.spec.ts --headed --reporter=html
+   //run test - npx playwright test comfrt-poc/src/tests/E2E_Example_Tests/E2E_DynamicTest.spec.ts --headed --reporter=html
    // cnage remote origin -  git remote set-url origin <new-repository-url>

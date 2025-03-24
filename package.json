@@ -1,15 +1,54 @@
 {
   "devDependencies": {
-    "@playwright/test": "^1.50.1",
+    "@playwright/test": "^1.51.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.1",
     "browserstack-local": "^1.5.6",
+    "playwright-testmo-reporter": "^1.11.2",
     "rimraf": "^2.5.4"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@lambdatest/playwright-driver": "^1.0.6",
-    "@lambdatest/smartui-cli": "^4.0.21",
+    "@lambdatest/smartui-cli": "^1.0.3",
+    "@testmo/testmo-api": "^2.1.0",
+    "axe-core": "^4.10.3",
+    "axios": "^1.8.2",
+    "csv-parser": "^3.2.0",
+    "csv-writer": "^1.6.0",
     "dotenv": "^16.4.7",
-    "playwright": "^1.50.1"
+    "fs": "^0.0.1-security",
+    "playwright": "^1.50.1",
+    "xmlbuilder2": "^3.1.1"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "report": "allure serve",
+    "test": "playwright test",
+    "test:demo": "playwright test -g demo",
+    "test:visual": "percy exec -- playwright test -g visual --reporter=dot",
+    "dynamicTest": "playwright test comfrt-poc/src/tests/E2E_Example_Tests/E2E_DynamicTest.spec.ts --headed --reporter=html",
+    "Purchase_2_products": "playwright test comfrt-poc/src/tests/Regression/E2E_Tests_For_Order_Page/Purchase_2_products.spec.ts --headed --reporter=html",
+    "Updating_Qty": "playwright test comfrt-poc/src/tests/Regression/E2E_Tests_For_Order_Page/Purchase_Product_After_Updating_Qty.spec.ts --headed --reporter=html",
+    "Purchase_Single_Product": "playwright test comfrt-poc/src/tests/Regression/E2E_Tests_For_Order_Page/Purchase_Single_Product.spec.ts --headed --reporter=html",
+    "Remove_One_Of_2_Products": "playwright test comfrt-poc/src/tests/Regression/E2E_Tests_For_Order_Page/Remove_One_Of_2_Products.spec.ts --headed --reporter=html",
+    "Remove_Only_Product": "playwright test comfrt-poc/src/tests/Regression/E2E_Tests_For_Order_Page/Remove_Only_Product.spec.ts --headed --reporter=html",
+    "Validate_Footer_Links": "playwright test comfrt-poc/src/tests/Regression/Footer/Validate_Footer_Links.spec.ts --headed --reporter=html",
+    "Validate_Sign_Up_Footer": "playwright test comfrt-poc/src/tests/Regression/Footer/Validate_Sign_Up_Footer.spec.ts --headed --reporter=html",
+    "Validate_AMBASSADOR": "playwright test comfrt-poc/src/tests/Regression/Header/Validate_AMBASSADOR.spec.ts --headed --reporter=html",
+    "Validate_Header": "playwright test comfrt-poc/src/tests/Regression/Header/Validate_Header.spec.ts --headed --reporter=html",
+    "Validate_Product_Details": "playwright test comfrt-poc/src/tests/Regression/PDP/Validate_Product_Details.spec.ts --headed --reporter=html",
+    "Validate_UpSell_Product": "playwright test comfrt-poc/src/tests/Regression/PDP/Validate_UpSell_Product.spec.ts --headed --reporter=html",
+    "Purchase_2_products_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/E2E_Tests_For_Order_Page_Mobile/Purchase_2_products_mobile.spec.ts --headed --reporter=html",
+    "Updating_QtyMobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/E2E_Tests_For_Order_Page_Mobile/Purchase_Product_After_Updating_Qty_mobile.spec.ts --headed --reporter=html",
+    "Purchase_Single_Product_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/E2E_Tests_For_Order_Page_Mobile/Purchase_Single_Product_mobile.spec.ts --headed --reporter=html ",
+    "Remove_One_Of_2_Products_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/E2E_Tests_For_Order_Page_Mobile/Remove_One_Of_2_Products_mobile.spec.ts --headed --reporter=html",
+    "Remove_Only_Product_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/E2E_Tests_For_Order_Page_Mobile/Remove_Only_Product_mobile.spec.ts --headed --reporter=html",
+    "Validate_Footer_Links_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/Footer_Mobile/Validate_Footer_Links_mobile.spec.ts --headed --reporter=html",
+    "Validate_Sign_Up_Footer_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/Footer_Mobile/Validate_Sign_Up_Footer_mobile.spec.ts --headed --reporter=html",
+    "Validate_AMBASSADOR_Mobiel": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/Header_Mobile/Validate_AMBASSADOR_mobile.spec.ts --headed --reporter=html",
+    "Validate_Header_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/Header_Mobile/Validate_Header_mobile.spec.ts --headed --reporter=html",
+    "Validate_Product_Details_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/PDP_Mobile/Validate_Product_Details_mobile.spec.ts --headed --reporter=html",
+    "Validate_UpSell_Product_Mobile": "playwright test comfrt-poc/src/tests/Regression_Mobile_View/PDP_Mobile/Validate_UpSell_Product_mobile.spec.ts --headed --reporter=html"
   }
 }

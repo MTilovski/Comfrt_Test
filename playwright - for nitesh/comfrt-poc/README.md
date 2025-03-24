@@ -91,5 +91,8 @@ Execution log will be present in the log file.
 ```sh
 test-results/logs/execution.log
 ```
+Playwright Junit report will be present inside
+```sh
+test-results/results/index.xml
 ##  ##
 **:pencil: If you find my work interesting don't forget to give a Star :star: & Follow me :busts_in_silhouette:**
