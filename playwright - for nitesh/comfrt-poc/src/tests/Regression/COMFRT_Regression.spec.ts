@@ -49,10 +49,10 @@ test('Validate product details_web', async ({page}) => {
     test.slow();
     // Navigate to Home Page     
         await home.launchWebSite();
-        await discount.closeDiscount()
+        await discount.closeDiscount();
     // Navigate to any category and select an item   
-        await home.selectRandomCategory(helpers.generateRandomNumberforCategory(1,8));   
-        await plp.selectRandomItem(helpers.generateRandomNumberforItem(1,3));
+        await home.navigateToCategory(Category.HOODIES); 
+        await plp.selectItem(HoodieItems.CLOUD_ZIP_HOODIE);
     // Validate that the product has a title and a short description
         await pdp.verifyItemTitle();
         await pdp.verifyItemDescription();
@@ -63,8 +63,8 @@ test('Validate UpSell Product_web', async ({page}) => {
     // Navigate to PDP     
         await home.launchWebSite();
         await discount.closeDiscount()
-        await home.selectRandomCategory(helpers.generateRandomNumberforCategory(1,8));   
-        await plp.selectRandomItem(helpers.generateRandomNumberforItem(1,3));
+        await home.navigateToCategory(Category.HOODIES);  
+        await plp.selectItem(HoodieItems.CLOUD_ZIP_HOODIE);
     // Navigate to Complete The Look section
     // Validate the following details are correct in Complete The Look section for UpSell products:
         // Product Image        
@@ -223,7 +223,7 @@ test('Remove one of the items from the side cart and validate the product purcha
     test.slow();
     // Navigate to page    
         await home.launchWebSite();
-        await discount.closeDiscount()
+        await discount.closeDiscount();
     // Verify the home page banner and logo    
         await home.verifyHomePageBanner();
         await home.verifyLogo();

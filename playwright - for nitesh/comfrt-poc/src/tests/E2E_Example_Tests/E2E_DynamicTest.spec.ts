@@ -65,4 +65,4 @@ test('Complete Shopping Journey - Dynamic test', async ({page}) => {
     });
    
    //run test - npx playwright test comfrt-poc/src/tests/E2E_Example_Tests/E2E_DynamicTest.spec.ts --headed --reporter=html
-   // cnage remote origin -  git remote set-url origin <new-repository-url>
+   // cnage remote origin -  git remote set-url origin https://github.com/MTilovski/Comfrt_Test

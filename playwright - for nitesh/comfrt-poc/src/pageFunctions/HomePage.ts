@@ -117,6 +117,20 @@ export default class HomeFunctions {
             }  
         });
     }
+    public async verifyCollectionLinksMobile(){
+        await test.step('verify all collection links', async() => {
+            await this.page.locator(HomePage.MENU_TOGGLE).click();
+            const collectionLink = await this.page.locator(HomePage.ALL_COLLECTION_LINKS_MOBILE);
+            const collectionLinkPresent = await collectionLink.isVisible();
+            if(collectionLinkPresent){
+                console.log("The collection links are present")
+            }else{
+                console.log("The collection links are not present")
+            }  
+            await this.page.locator(HomePage.MENU_CLOSE).waitFor();
+            await this.page.locator(HomePage.MENU_CLOSE).click();
+        });
+    }    
     public async collectionLinkNavigation(collectionTitle: string){
         await test.step('verify that all collection links work properly and navigate to homepage', async() => {
             let COLLETION_LINK = `//*[@data-orly-type="main_menu_item_desktop"and contains(text(),"${collectionTitle}")]`;
@@ -124,6 +138,35 @@ export default class HomeFunctions {
             await this.ui.element(HomePage.ALL_COLLECTION_LINKS,'wait for collection links').waitForPresent();
             await this.page.locator(COLLETION_LINK).click();
             await this.page.waitForTimeout(2000);
+            const PageTitles = await this.page.locator(COLLECTION_TITLE);
+            const collectionTitleVisible = await PageTitles.isVisible();
+            if(collectionTitleVisible){
+                await console.log (collectionTitle,"collection link works properly")
+            }else{
+                await console.log (collectionTitle,"collection link does not work properly")
+            }
+        });
+    }
+    public async collectionLinkNavigationMobile(collectionTitle: string, collectionSubCategory: string, title: string){
+        await test.step('verify that all collection links work properly and navigate to homepage', async() => {
+            let COLLETION_LINK_SUB = `(//*[contains(@for,'menu-item') and contains(.,'${collectionTitle}')])[1]`;
+            let COLLETION_LINK = `(//*[@class="menuItemLink" and contains(.,"${collectionTitle}")])[1]`;
+            let COLLECTION_SUB_TITLE = `(//*[@class="menuItemLink" and contains(.,"${collectionTitle}")])[1]`;
+            let COLLECTION_TITLE = `(//h1[contains(text(),"${title}")])[1]`;
+            await this.page.locator(HomePage.MENU_TOGGLE).click();
+            await this.ui.element(HomePage.ALL_COLLECTION_LINKS,'wait for collection links').waitForPresent();
+            const collectionSub = await this.page.locator(COLLETION_LINK_SUB);
+            const collectionSubVisible = await collectionSub.isVisible();
+            const collection = await this.page.locator(COLLETION_LINK);
+            const collectionVisible = await collection.isVisible();
+            await this.page.waitForTimeout(2000);
+            if(collectionSubVisible){
+                await this.page.locator(COLLETION_LINK_SUB).click();
+                await this.page.locator(COLLECTION_SUB_TITLE).waitFor();
+                await this.page.locator(COLLECTION_SUB_TITLE).click();
+            }else if(collectionVisible){
+                await this.page.locator(COLLETION_LINK).click();
+            }
             const PageTitles = await this.page.locator(COLLECTION_TITLE);
             const collectionTitleVisible = await PageTitles.isVisible();
             if(collectionTitleVisible){
@@ -215,6 +258,18 @@ export default class HomeFunctions {
             await this.page.locator(HomePage.RETURNS_EXCHANGE_TEXT).isVisible();
             await console.log(linkTitle, "Link works properly")
             await this.page.locator(HomePage.BACK_TO_SHOP_BUTTON).click();
+            await this.page.waitForTimeout(500);
+        });
+    } 
+    public async checkExchangestLinksMobile(linkTitle: string){
+        await test.step('Check if the links in the footer are wirling properly', async() => {
+            let link = `//a[contains(text(),"${linkTitle}")]`;
+            await this.page.locator(link).scrollIntoViewIfNeeded();
+            await this.page.locator(link).click();
+            await this.page.locator(HomePage.RETURNS_EXCHANGE_TEXT).waitFor();
+            await this.page.locator(HomePage.RETURNS_EXCHANGE_TEXT).isVisible();
+            await console.log(linkTitle, "Link works properly")
+            await this.page.locator(HomePage.BACK_TO_SHOP_BUTTON_MOBILE).click();
             await this.page.waitForTimeout(500);
         });
     } 

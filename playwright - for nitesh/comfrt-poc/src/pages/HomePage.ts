@@ -12,5 +12,9 @@ export default class HomePage {
     static readonly CONTACT_PAGE_TEXT_VERIFICATION = '//p[contains(text(),"For any questions, please contact our support team at ")]';
     static readonly RETURNS_EXCHANGE_TEXT = '//h2[contains(text(),"Returns and exchanges")]'
     static readonly BACK_TO_SHOP_BUTTON = '(//a[@class="shop-link"])[1]';
+    static readonly BACK_TO_SHOP_BUTTON_MOBILE = '(//a[@class="shop-link"])[2]';
     static readonly MENU_TOGGLE = '//label[@for="menu-toggle"]';
+    static readonly MENU_CLOSE = '//*[@class="close"]';
+    static readonly ALL_COLLECTION_LINKS_MOBILE = '//div[@class="menuContent"]';
+
 }
