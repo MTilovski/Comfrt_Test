@@ -360,7 +360,7 @@ test('Verify the Footer menu links_web', async ({page}) => {
         .. testmo automation:run:submit `
        --instance https://outsmartly.testmo.net `
        --project-id 1 `
-       --name "Regression Suit 1" `
+       --name "Regression Suit Web" `
        --source "Playwright" `
        --results "D:\Outsmartly\playwright_COMFRT_Dynamic\results_fixed.xml" 
 
