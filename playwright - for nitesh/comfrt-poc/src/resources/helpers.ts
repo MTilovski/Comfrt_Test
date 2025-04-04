@@ -13,6 +13,7 @@ export default class Helpers {
     public titleMatch: boolean;
     public elementMatch: boolean;
     public randomCategoty: string;
+    public elementNoMatch: boolean;
 
     public getPage(): Page {
             return this.page;
@@ -141,5 +142,19 @@ export default class Helpers {
         console.log('kategorija: ',randomCategory);
         this.randomCategoty = randomCategory
         return randomCategory
-    }        
+    }  
+
+    public async compareNegative(productElement1: string, productElement2: string, elementName: string): Promise<boolean> {
+        if (productElement1 !== productElement2) {
+            await console.log('The', elementName, 'is not matching. Price1:', productElement1, 'Price2:', productElement2);
+             this.elementNoMatch = true;
+            return true;
+        } else {
+            await console.log('The', elementName, 'is matching. Price1:', productElement1, 'Price2:', productElement2);
+            this.elementNoMatch = false;
+            return false;
+        }
+    }
+    
+          
 }

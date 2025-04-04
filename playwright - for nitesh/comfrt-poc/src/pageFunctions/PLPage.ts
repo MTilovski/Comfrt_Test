@@ -18,14 +18,14 @@ export default class PLPageFunctions {
     }
 
     public async selectItem(Item: string){
-        test.step('Select Item From PLP', async() => {
+        await test.step('Select Item From PLP', async() => {
             let ITEM = `//*[@data-orly-handle="${Item}"]`;
             await this.page.locator(ITEM).click();
         });
     }
 
     public async verifyPLPTitle(Title: string){
-        test.step('Verify that the PLP title is present and correct', async() => {
+        await test.step('Verify that the PLP title is present and correct', async() => {
             let TITLE =`//*[@id="collections_with_pagination-default-collections-with-pagination_0"]/h1[contains(text(),'${Title}')]`
             const mainTitle = await this.page.locator(TITLE);
             const mainTitleVisable = await mainTitle.isVisible();
@@ -43,12 +43,12 @@ export default class PLPageFunctions {
         })
     }
     public async verifyItemsOnPLP(){
-        test.step('verify thet items are present on the PLP', async() => {
+        await test.step('verify thet items are present on the PLP', async() => {
             //IDS ARE NEEDED 
         })
     }
     public async verifyDynamicPLPTitle(){
-        test.step('Verify that the PLP title is present', async() => {
+        await test.step('Verify that the PLP title is present', async() => {
             const mainTitle = await this.page.locator(PLPage.MAIN_TITLE).isVisible();
             const titleBelowBanner = await this.page.locator(PLPage.TITLE_BELOW_BANNER).isVisible();
             if (mainTitle) {
@@ -61,7 +61,7 @@ export default class PLPageFunctions {
         });
     }
     public async selectRandomItem(itemNumber: number){
-        test.step('Selecting a random item and verify the item title on PLP', async() =>{
+        await test.step('Selecting a random item and verify the item title on PLP', async() =>{
             let ITEM1 = `//div[contains(@id, "collections_with_pagination")]/div/div/div[${itemNumber}]/a/div[2]/div[1]`;
             let ITEM2 = `(//div[contains(@id,"featured_products_section")])[1]/div/div[2]/div/div[${itemNumber}]/a/div[2]/div[1]`;
            // let ITEM3 = `(//div[contains(@id,"featured_products_section")])[2]/div/div[2]/div/div[${itemNumber}]/a`;
@@ -89,7 +89,25 @@ export default class PLPageFunctions {
 
         });
     }
-
+    public async validatePaginationNumbers(numbers: string){
+        await test.step('Validate that the user can navigate true the pages by using the numbers on the pagination', async() =>{
+            let pageNumber = `//div[@id="collections_with_pagination-default-collections-with-pagination_0"]//a[contains(text(),"${numbers}")]`; 
+            await this.page.locator(pageNumber).waitFor();
+            await this.page.locator(pageNumber).click();
+            await console.log(`The ${numbers} page is displayed navigating by numbers`);
+            await this.page.waitForTimeout(1000);
+        });
+    }
+    public async validatePaginationSymbols(number2: string){
+        await test.step('Validate that the user can navigate true the pages by using the numbers on the pagination', async() =>{
+            let pageNumber = `//div[@id="collections_with_pagination-default-collections-with-pagination_0"]//*[@d="${number2}"]`; 
+            await this.page.locator(pageNumber).waitFor();
+            await this.page.locator(pageNumber).click();
+            await console.log(`The ${number2} page is displayed navigating by symbols`);
+            await this.page.waitForTimeout(1000);
+        });
+    }
+    
 }
 
     

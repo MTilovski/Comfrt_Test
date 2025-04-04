@@ -32,8 +32,8 @@ export default class SideCartFunctions {
 
     public async clickCheckOutButton(){
         await test.step('Click the checkout button', async() =>{
-        await this.ui.element(SideCart.CHECK_OUT_BUTTON,'Click the checkout button').waitForPresent();
-        await this.ui.element(SideCart.CHECK_OUT_BUTTON,'Click the checkout button').click();
+            await this.ui.element(SideCart.CHECK_OUT_BUTTON,'Click the checkout button').waitForPresent();
+            await this.ui.element(SideCart.CHECK_OUT_BUTTON,'Click the checkout button').click();
         })
     } 
     public async openSideCart(){
@@ -168,6 +168,7 @@ export default class SideCartFunctions {
         await test.step('REmove item from sidecart', async() =>{
         await this.ui.element(SideCart.REMOVE_ITEM_SIDECART,'wait for button').waitForPresent();
         await this.ui.element(SideCart.REMOVE_ITEM_SIDECART,'Click the remove button').click();
+        await this.page.waitForTimeout(2000);
         })
     } 
     public async verifySidecartNumber (NM: string){

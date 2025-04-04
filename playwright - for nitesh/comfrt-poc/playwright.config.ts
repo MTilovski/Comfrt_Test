@@ -1,4 +1,4 @@
-import { PlaywrightTestConfig, devices  } from '@playwright/test';
+import { PlaywrightTestConfig, devices, firefox  } from '@playwright/test';
 import dotenv from 'dotenv';
 import Browser from 'framework/Browser';
 import TestListener from 'framework/logger/TestListener'
@@ -20,8 +20,6 @@ dotenv.config();
 const timeInMin: number = 60 * 1000;
  const config: PlaywrightTestConfig = {
   
-
-
   testDir: "./src/tests",
   testMatch: "**/*.spec.ts",
 
@@ -45,7 +43,8 @@ const timeInMin: number = 60 * 1000;
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  // retries: process.env.CI ? 2 : 0,
+  retries: 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -58,7 +57,7 @@ const timeInMin: number = 60 * 1000;
   //   // embedAttachmentsAsProperty: undefined 
   // }]],
   
-
+  
   reporter: [
     ['html', { open: 'always' }],
     ['json', { outputFile: 'test-results/results.json' }],

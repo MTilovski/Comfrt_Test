@@ -1,6 +1,7 @@
 export default class PDPage {
-    static readonly ADD_ITEM_TO_CART_BUTTON_MAIN = '//button[@type="submit"]/div[contains(text(),"In-Stock: Ready to Ship")]';
-    static readonly ADD_PRE_ORDER_TO_CART_BUTTON = '//*[contains(text(),"Add Pre-Order to Cart")]';
+    static readonly ADD_ITEM_TO_CART_BUTTON_MAIN = '(//button[@type="submit"]/div[contains(text(),"In-Stock: Ready to Ship")])[1]';
+    static readonly ADD_PRE_ORDER_TO_CART_BUTTON = '(//*[contains(text(),"Add Pre-Order to Cart")])[1]';
+    static readonly ADD_PRE_ORDER_TO_CART_MOBILE = '(//*[contains(text(),"Add Pre-Order")])[1]';
     static readonly CHECKOUT = '//button[text()="Checkout"]';
     static readonly PRODUCT_TITLE = '//*[contains(@id, "product_hero_title")]/h1';
     static readonly PRODUCT_DISCOUNTED_PRICE = '(//*[contains(@id, "product_hero_price")]/div/h2/span)[2]'; // This locator is for items that HAVE a discount price

@@ -5,6 +5,7 @@ import AlertActions from "framework/actions/AlertActions";
 
 import * as dotenv from "dotenv";
 import CheckOut from "pages/CheckOut";
+import { checkPrime } from "crypto";
 dotenv.config({ path: "playwright - for nitesh\\comfrt-poc\\.env" });
 
 
@@ -17,6 +18,8 @@ export default class CheckOutFunctions {
     public size_checkout: string;
     public price_checkout: string;
     public qty_checkout: string;
+    public grabTotalPriceBeforeDiscount: string;
+    public grabTotalPriceAfterDiscount: string;
 
 
     public getPage(): Page {
@@ -112,4 +115,67 @@ export default class CheckOutFunctions {
             }.toString()
         });
     }  
+    public async appplyValidCheckoutCode_Web(validDiscountCode: string){
+        await test.step('Apply valid the discount code', async() =>{
+            const grabTotalPriceBeforeDiscount = await this.page.locator(CheckOut.TOTAL_PRICE_WEB).textContent();
+            this.grabTotalPriceBeforeDiscount = grabTotalPriceBeforeDiscount
+            await console.log('The total price before the discount is: ',grabTotalPriceBeforeDiscount);
+            await this.page.locator(CheckOut.DISCOUNT_PAGE_FIELD_WEB).waitFor();
+            await this.page.locator(CheckOut.DISCOUNT_PAGE_FIELD_WEB).fill(validDiscountCode);
+            await this.page.waitForTimeout(300);
+            await this.page.locator(CheckOut.APPLY_BUTTON_WEB).click();
+            await this.page.locator(CheckOut.ORDER_DISCOUNT_ROW).waitFor();
+            const grabTotalPriceAfterDiscount = await this.page.locator(CheckOut.TOTAL_PRICE_WEB).textContent();
+            this.grabTotalPriceAfterDiscount = grabTotalPriceAfterDiscount
+            await console.log('The total price before the discount is: ',grabTotalPriceAfterDiscount);
+            return {
+                grabTotalPriceBeforeDiscount,
+                grabTotalPriceAfterDiscount
+            }.toString();
+        });
+    }
+    public async appplyInvalidCheckoutCode_Web(invalidDiscountCode: string){
+        await test.step('Apply invalid the discount code', async() =>{
+            await this.page.locator(CheckOut.DISCOUNT_PAGE_FIELD_WEB).waitFor();
+            await this.page.locator(CheckOut.DISCOUNT_PAGE_FIELD_WEB).fill(invalidDiscountCode);
+            await this.page.waitForTimeout(300);
+            await this.page.locator(CheckOut.APPLY_BUTTON_WEB).click();
+            await this.page.locator(CheckOut.ERROR_MESSAGE_WEB).waitFor();
+        });
+    }
+    public async appplyValidCheckoutCode_Mobile(validDiscountCode: string){
+        await test.step('Apply valid the discount code', async() =>{
+            const grabTotalPriceBeforeDiscount = await this.page.locator(CheckOut.TOTAL_PRICE_MOBILE).textContent();
+            this.grabTotalPriceBeforeDiscount = grabTotalPriceBeforeDiscount
+            await console.log('The total price before the discount is: ',grabTotalPriceBeforeDiscount);
+            await this.page.locator(CheckOut.DISCOUNT_PAGE_FIELD_MOBILE).waitFor();
+            await this.page.locator(CheckOut.DISCOUNT_PAGE_FIELD_MOBILE).fill(validDiscountCode);
+            await this.page.waitForTimeout(300);
+            await this.page.locator(CheckOut.APPLY_BUTTON_MOBILE).click();
+            await this.page.locator(CheckOut.ORDER_DISCOUNT_ROW_MOBILE).waitFor();
+            const grabTotalPriceAfterDiscount = await this.page.locator(CheckOut.TOTAL_PRICE_MOBILE).textContent();
+            this.grabTotalPriceAfterDiscount = grabTotalPriceAfterDiscount
+            await console.log('The total price before the discount is: ',grabTotalPriceAfterDiscount);
+            return {
+                grabTotalPriceBeforeDiscount,
+                grabTotalPriceAfterDiscount
+            }.toString()
+        });
+    }
+    public async appplyInvalidCheckoutCode_Mobile(invalidDiscountCode: string){
+        await test.step('Apply invalid the discount code', async() =>{
+            await this.page.locator(CheckOut.DISCOUNT_PAGE_FIELD_MOBILE).waitFor();
+            await this.page.locator(CheckOut.DISCOUNT_PAGE_FIELD_MOBILE).fill(invalidDiscountCode);
+            await this.page.waitForTimeout(300);
+            await this.page.locator(CheckOut.APPLY_BUTTON_MOBILE).click();
+            await this.page.locator(CheckOut.ERROR_MESSAGE_MOBILE).waitFor();
+        });
+    }
+    public async clickBreadCrumb(breadCrumbName: string){
+        await test.step('Click breadcrumb', async() =>{
+            let breadCrumb = `//nav[@aria-label="Breadcrumb"]//*[contains(text(),"${breadCrumbName}")]`;
+            await this.page.locator(breadCrumb).waitFor();
+            await this.page.locator(breadCrumb).click();
+        });
+    }
 }

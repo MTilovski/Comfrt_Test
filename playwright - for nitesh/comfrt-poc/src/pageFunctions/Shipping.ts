@@ -18,11 +18,10 @@ export default class ShippingFunctions {
     }
 
     public async clickContinueToPayment(){
-        test.step('click the continue to payment button',async() =>{
+        await test.step('click the continue to payment button',async() =>{
            await this.ui.element(Shipping.CONTINUE_TO_PAYMENT_BUTTON,'continue to payment button').waitForPresent();
            await this.ui.element(Shipping.CONTINUE_TO_PAYMENT_BUTTON,'continue to payment button').click();
-        })
-
+        });
     }
 
 }

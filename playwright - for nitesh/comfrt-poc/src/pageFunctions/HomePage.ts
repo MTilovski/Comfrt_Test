@@ -1,4 +1,4 @@
-import test, { Page, expect } from "@playwright/test";
+import test, { Page, expect, firefox } from "@playwright/test";
 import UIActions from "framework/actions/UIActions";
 import HomePageConstants from "framework/constants/HomePageConstants";
 import HomePage from "../pages/HomePage";

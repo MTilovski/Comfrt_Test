@@ -57,6 +57,7 @@ export default class PDPFunctions {
     public async verifyItemTitle(){
         await test.step('Verify that the item title on PDP is present', async() => {
             await this.ui.element(PDPage.PRODUCT_TITLE,PDPPageConstants.CART_ITEM).waitForPresent();
+            await console.log('Title is present')
         })
     }
 
@@ -119,5 +120,18 @@ export default class PDPFunctions {
             await this.page.locator(PDPage.COMPLETE_THE_LOOK_IMAGE_1).isVisible();
         });
     }    
+    public async addPreOrderToCart(){
+        await test.step('Add Pre-Order to cart', async() => {
+            await this.page.waitForTimeout(300);
+            await this.page.locator(PDPage.ADD_PRE_ORDER_TO_CART_BUTTON).isVisible();
+            await this.page.locator(PDPage.ADD_PRE_ORDER_TO_CART_BUTTON).click()
+        });
+    }
+    public async addPreOrderToCartMobile(){
+        await test.step('Add Pre-Order to cart', async() => {
+            await this.page.waitForTimeout(300);
+            await this.page.locator(PDPage.ADD_PRE_ORDER_TO_CART_MOBILE).isVisible();
+            await this.page.locator(PDPage.ADD_PRE_ORDER_TO_CART_MOBILE).click()
+        });
+    }
 }
-

@@ -4,4 +4,5 @@ export default class Color {
     static readonly WOLF_GRAY = 'Wolf Grey';
     static readonly LATTE = 'Latte';
     static readonly BARK = 'Bark';
+    static readonly BLUE_STEAL = 'Blue Steel'
 }

@@ -14,6 +14,7 @@ import ShippingFunctions from 'pageFunctions/Shipping';
 import Titles from 'data/Title';
 import Helpers from 'resources/helpers';
 import { fail } from 'assert';
+import DiscountFunctions from 'pageFunctions/Discount';
 
 let home: HomeFunctions;
 let plp: PLPageFunctions;
@@ -22,6 +23,7 @@ let sidecart: SideCartFunctions;
 let checkout: CheckOutFunctions;
 let shipping: ShippingFunctions;
 let helpers: Helpers;
+let discount: DiscountFunctions;
 
 test.beforeEach(async ({ page }) => {
 
@@ -32,7 +34,7 @@ test.beforeEach(async ({ page }) => {
     checkout = new CheckOutFunctions(page);
     shipping = new ShippingFunctions(page);
     helpers = new Helpers(page);
-
+    discount = new DiscountFunctions(page);
 });
 
 test('Complete Shopping Journey - Static test', async ({page}) => {
@@ -71,7 +73,7 @@ test('Complete Shopping Journey - Static test', async ({page}) => {
     // await shipping.clickContinueToPayment();                                Unclickable button
     
  });
-
+ 
   // run test -- npx playwright test comfrt-poc/src/tests/E2E_Example_Tests/E2E_StaticTest.spec.ts --headed --reporter=html
 
   // npx playwright test comfrt-poc/src/tests/E2E_Example_Tests/E2E_StaticTest.spec.ts --headed --reporter=junit > test-results/results.xml 
